@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Vaprosinator.iml" filepath="$PROJECT_DIR$/.idea/modules/Vaprosinator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Vaprosinator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Vaprosinator_main.iml" group="Vaprosinator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Vaprosinator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Vaprosinator_test.iml" group="Vaprosinator" />
+    </modules>
+  </component>
+</project>
