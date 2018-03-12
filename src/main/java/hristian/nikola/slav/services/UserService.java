@@ -1,18 +1,18 @@
 package hristian.nikola.slav.services;
 
 import hristian.nikola.slav.config.HibernateUtil;
-import hristian.nikola.slav.models.Player;
-import hristian.nikola.slav.repositories.PlayerRepository;
+import hristian.nikola.slav.models.User;
+import hristian.nikola.slav.repositories.UserRepository;
 import org.hibernate.Session;
 
-public class PlayerService {
+public class UserService {
 
-    private PlayerRepository playerRepository = new PlayerRepository();
+    private UserRepository userRepository = new UserRepository();
 
-    public void insert(Player player) {
+    public void insert(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.save(player);
+        session.save(user);
         session.getTransaction().commit();
     }
 

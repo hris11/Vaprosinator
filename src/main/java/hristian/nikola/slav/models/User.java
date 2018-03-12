@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "player")
-public class Player {
+public class User {
     @JsonIgnore
     @Id
     @GeneratedValue(generator="increment")
@@ -24,13 +24,13 @@ public class Player {
     @Column(name = "ingamename")
     private String inGameName;
 
-    public Player(String username, String password, String inGameName) {
+    public User(String username, String password, String inGameName) {
         this.username = username;
         this.password = password;
         this.inGameName = inGameName;
     }
 
-    public Player() {}
+    public User() {}
 
     public Integer getId() {
         return id;
@@ -68,11 +68,11 @@ public class Player {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
-        return Objects.equals(id, player.id) &&
-                Objects.equals(username, player.username) &&
-                Objects.equals(password, player.password) &&
-                Objects.equals(inGameName, player.inGameName);
+        User user = (User) o;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(username, user.username) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(inGameName, user.inGameName);
     }
 
     @Override

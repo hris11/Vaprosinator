@@ -1,4 +1,4 @@
 package hristian.nikola.slav.repositories;
 
-public class PlayerRepository {
+public class UserRepository {
 }

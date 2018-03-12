@@ -20,7 +20,7 @@
 
 
 
-        <mapping class="hristian.nikola.slav.models.Player"/>
+        <mapping class="hristian.nikola.slav.models.User"/>
 
     </session-factory>
 </hibernate-configuration>
