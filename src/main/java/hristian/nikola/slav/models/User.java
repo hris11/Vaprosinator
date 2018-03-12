@@ -4,10 +4,12 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
+
 @Entity
-@Table(name = "player")
+@Table(name = "user")
 public class User {
     @JsonIgnore
     @Id
@@ -15,22 +17,29 @@ public class User {
     @GenericGenerator(name="increment", strategy = "increment")
     private Integer id;
 
-    @Column
-    private String username;
+    @Column(name = "nickname")
+    private String nickname;
 
-    @Column
-    private String password;
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_id")
+    private List<UserInformation> userInformations;
 
-    @Column(name = "ingamename")
-    private String inGameName;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_id")
+    private ApplicationUser applicationUser;
 
-    public User(String username, String password, String inGameName) {
-        this.username = username;
-        this.password = password;
-        this.inGameName = inGameName;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "users")
+    private List<Achievement> achievements;
+
+    public User(String nickname, List<UserInformation> userInformations, ApplicationUser applicationUser) {
+        this.nickname = nickname;
+        this.userInformations = userInformations;
+        this.applicationUser = applicationUser;
     }
 
-    public User() {}
+    public User() {
+    }
 
     public Integer getId() {
         return id;
@@ -40,28 +49,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public String getPassword() {
-        return password;
+    public List<UserInformation> getUserInformations() {
+        return userInformations;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserInformations(List<UserInformation> userInformations) {
+        this.userInformations = userInformations;
     }
 
-    public String getInGameName() {
-        return inGameName;
+    public ApplicationUser getApplicationUser() {
+        return applicationUser;
     }
 
-    public void setInGameName(String inGameName) {
-        this.inGameName = inGameName;
+    public void setApplicationUser(ApplicationUser applicationUser) {
+        this.applicationUser = applicationUser;
     }
 
     @Override
@@ -70,14 +79,14 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id) &&
-                Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(inGameName, user.inGameName);
+                Objects.equals(nickname, user.nickname) &&
+                Objects.equals(userInformations, user.userInformations) &&
+                Objects.equals(applicationUser, user.applicationUser);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, username, password, inGameName);
+        return Objects.hash(id, nickname, userInformations, applicationUser);
     }
 }

@@ -1,0 +1,14 @@
+<!--
+<hibernate-mapping>
+    <class name="hristian.nikola.slav.models.User" table="user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+        </id>
+        <property name="nickname" type="string">
+            <column name="nickname" length="50"/>
+        </property>
+        <property name="userInformations" type="Integer">
+            <column name="userInformations" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>-->
