@@ -20,6 +20,9 @@ public class User {
     @Column(name = "nickname")
     private String nickname;
 
+    @Column(name = "game_id")
+    private Integer gameId;
+
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
     private List<UserInformation> userInformations;
@@ -71,6 +74,22 @@ public class User {
 
     public void setApplicationUser(ApplicationUser applicationUser) {
         this.applicationUser = applicationUser;
+    }
+
+    public Integer getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(Integer gameId) {
+        this.gameId = gameId;
+    }
+
+    public List<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
     }
 
     @Override
