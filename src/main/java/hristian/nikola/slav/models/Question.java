@@ -29,18 +29,21 @@ public class Question {
     @Column
     private String question;
 
-    @Column(name = "correct_answer")
-    private String correctAnswer;
-
-    @Column(name = "wrong_answers")
-    private List<String> wrongAnswers;
-
     @ManyToOne(cascade = {CascadeType.ALL})
     private Topic questionTopic;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Answer> answers;
+
+    public Question(String question, Topic questionTopic, List<Answer> answers) {
+        this.question = question;
+        this.questionTopic = questionTopic;
+        this.answers = answers;
+    }
+
+    public Question() {
+    }
 
     public Integer getId() {
         return id;
@@ -56,22 +59,6 @@ public class Question {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
-    public List<String> getWrongAnswers() {
-        return wrongAnswers;
-    }
-
-    public void setWrongAnswers(List<String> wrongAnswers) {
-        this.wrongAnswers = wrongAnswers;
     }
 
     public Topic getQuestionTopic() {
@@ -92,23 +79,18 @@ public class Question {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Question question1 = (Question) o;
         return Objects.equals(id, question1.id) &&
-            Objects.equals(question, question1.question) &&
-            Objects.equals(correctAnswer, question1.correctAnswer) &&
-            Objects.equals(wrongAnswers, question1.wrongAnswers) &&
-            Objects.equals(questionTopic, question1.questionTopic) &&
-            Objects.equals(answers, question1.answers);
+                Objects.equals(question, question1.question) &&
+                Objects.equals(questionTopic, question1.questionTopic) &&
+                Objects.equals(answers, question1.answers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, question, correctAnswer, wrongAnswers, questionTopic, answers);
+
+        return Objects.hash(id, question, questionTopic, answers);
     }
 }

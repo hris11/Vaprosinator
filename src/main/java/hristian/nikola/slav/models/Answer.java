@@ -1,12 +1,13 @@
 package hristian.nikola.slav.models;
 
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
+@Entity
+@Table(name = "answer")
 public class Answer {
     @JsonIgnore
     @Id
