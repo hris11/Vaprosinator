@@ -1,32 +1,31 @@
 package hristian.nikola.slav.repositories;
 
 import hristian.nikola.slav.config.HibernateUtil;
-import hristian.nikola.slav.models.User;
-import org.hibernate.Hibernate;
+import hristian.nikola.slav.models.Topic;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class UserRepository {
+public class TopicRepository {
     Session session = HibernateUtil.getSessionFactory().openSession();
 
-    public User getUserById(int id) {
+    public Topic getTpicById(int id) {
         return null;
     }
 
-    public List<User> getUsers() {
+    public List<Topic> getTopics() {
         return null;
     }
 
-    public User createUser(User user) {
+    public Topic createTopic(Topic topic) {
         return null;
     }
 
-    public User updateUser(int id, User user) {
+    public Topic updateTopic(int id, Topic topic) {
         return null;
     }
 
-    public void deleteUser(int id) {
+    public void deleteTopic(int id) {
 
     }
 }
