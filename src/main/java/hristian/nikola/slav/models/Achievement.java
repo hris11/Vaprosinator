@@ -1,7 +1,5 @@
-/*
 package hristian.nikola.slav.models;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -82,4 +80,3 @@ public class Achievement {
         return Objects.hash(id, goal, completed, users);
     }
 }
-*/
