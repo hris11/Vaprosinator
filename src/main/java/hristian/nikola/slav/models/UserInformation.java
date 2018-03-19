@@ -1,3 +1,4 @@
+/*
 package hristian.nikola.slav.models;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -40,3 +41,4 @@ public class UserInformation {
         this.userId = userId;
     }
 }
+*/

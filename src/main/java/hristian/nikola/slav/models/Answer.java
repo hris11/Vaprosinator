@@ -18,11 +18,20 @@ public class Answer {
     @Column
     private String content;
 
-    @Column(columnDefinition = "default 'false'")
+    @Column
     private Boolean correct;
 
     @Column(name = "question_id")
     private Integer questionId;
+
+    public Answer(String content, Boolean correct, Integer questionId) {
+        this.content = content;
+        this.correct = correct;
+        this.questionId = questionId;
+    }
+
+    public Answer() {
+    }
 
     public Integer getId() {
       return id;

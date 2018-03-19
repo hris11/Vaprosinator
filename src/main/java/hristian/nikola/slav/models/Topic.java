@@ -1,14 +1,11 @@
 package hristian.nikola.slav.models;
 
+import java.util.List;
 import java.util.Objects;
-import javax.persistence.Column;
+import javax.persistence.*;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "topic")
@@ -24,6 +21,10 @@ public class Topic {
 
     @Column(name = "game_id")
     private Integer gameId;
+
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "topic_id")
+    private List<Question> questions;
 
     public Integer getId() {
         return id;

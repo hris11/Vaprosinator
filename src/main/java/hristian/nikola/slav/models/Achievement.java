@@ -1,3 +1,4 @@
+/*
 package hristian.nikola.slav.models;
 
 import javax.swing.text.StyledEditorKit.BoldAction;
@@ -81,3 +82,4 @@ public class Achievement {
         return Objects.hash(id, goal, completed, users);
     }
 }
+*/
