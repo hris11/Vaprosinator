@@ -34,9 +34,9 @@ public class Game {
     @JoinColumn(name = "game_id")
     private List<Topic> topics;
 
-    /*@OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "game_id")
-    private List<User> users;*/
+    private List<User> users;
 
     public Game(Boolean over, Integer points, List<Topic> topics) {
         this.over = over;
