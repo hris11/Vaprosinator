@@ -29,21 +29,23 @@ public class Question {
     @Column
     private String question;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    private Topic questionTopic;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Answer> answers;
 
-    public Question(String question, Topic questionTopic, List<Answer> answers) {
+    @Column(name = "topic_id")
+    private Integer topicId;
+
+    public Question(String question, List<Answer> answers, Integer topicId) {
         this.question = question;
-        this.questionTopic = questionTopic;
         this.answers = answers;
+        this.topicId = topicId;
     }
 
     public Question() {
     }
+
+
 
     public Integer getId() {
         return id;
@@ -61,20 +63,20 @@ public class Question {
         this.question = question;
     }
 
-    public Topic getQuestionTopic() {
-        return questionTopic;
-    }
-
-    public void setQuestionTopic(Topic questionTopic) {
-        this.questionTopic = questionTopic;
-    }
-
     public List<Answer> getAnswers() {
         return answers;
     }
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Integer getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(Integer topicId) {
+        this.topicId = topicId;
     }
 
     @Override
@@ -84,13 +86,13 @@ public class Question {
         Question question1 = (Question) o;
         return Objects.equals(id, question1.id) &&
                 Objects.equals(question, question1.question) &&
-                Objects.equals(questionTopic, question1.questionTopic) &&
-                Objects.equals(answers, question1.answers);
+                Objects.equals(answers, question1.answers) &&
+                Objects.equals(topicId, question1.topicId);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, question, questionTopic, answers);
+        return Objects.hash(id, question, answers, topicId);
     }
 }

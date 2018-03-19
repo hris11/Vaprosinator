@@ -34,9 +34,18 @@ public class Game {
     @JoinColumn(name = "game_id")
     private List<Topic> topics;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    /*@OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "game_id")
-    private List<User> users;
+    private List<User> users;*/
+
+    public Game(Boolean over, Integer points, List<Topic> topics) {
+        this.over = over;
+        this.points = points;
+        this.topics = topics;
+    }
+
+    public Game() {
+    }
 
     public Integer getId() {
         return id;
@@ -70,32 +79,20 @@ public class Game {
         this.topics = topics;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
         return Objects.equals(id, game.id) &&
-            Objects.equals(over, game.over) &&
-            Objects.equals(points, game.points) &&
-            Objects.equals(topics, game.topics) &&
-            Objects.equals(users, game.users);
+                Objects.equals(over, game.over) &&
+                Objects.equals(points, game.points) &&
+                Objects.equals(topics, game.topics);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, over, points, topics, users);
+
+        return Objects.hash(id, over, points, topics);
     }
 }
