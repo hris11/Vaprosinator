@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { AuthHandlerComponent } from './auth-handler/auth-handler.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthHandlerComponent
   ],
   imports: [
     BrowserModule
