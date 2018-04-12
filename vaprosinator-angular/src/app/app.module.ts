@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthHandlerComponent } from './auth-handler/auth-handler.component';
 import { AuthLoginComponent } from './auth-login/auth-login.component';
 import { AuthRegisterComponent } from './auth-register/auth-register.component';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AuthRegisterComponent } from './auth-register/auth-register.component';
     AuthRegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
