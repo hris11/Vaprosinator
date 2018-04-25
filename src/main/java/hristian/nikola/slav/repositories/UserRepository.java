@@ -11,7 +11,8 @@ public class UserRepository {
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public User getUserById(int id) {
-        return null;
+        User user = session.get(User.class, id);
+        return user;
     }
 
     public List<User> getUsers() {

@@ -7,10 +7,12 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class GameRepository {
+
     Session session = HibernateUtil.getSessionFactory().openSession();
 
     public Game getGameById(int id) {
-        return null;
+        Game game = session.get(Game.class, id);
+        return game;
     }
 
     public List<Game> getGames() {

@@ -50,6 +50,14 @@ public class Topic {
         this.gameId = gameId;
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

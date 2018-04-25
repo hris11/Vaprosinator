@@ -10,13 +10,15 @@ public class UserService {
 
     private UserRepository userRepository = new UserRepository();
 
-    public void insert(ApplicationUser user) {
+    public void insert(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
     }
-
+    public User getUser(int userId) {
+        return userRepository.getUserById(userId);
+    }
     public User joinLoby(int lobyId) {
         return null;
     }
