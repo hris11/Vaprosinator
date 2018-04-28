@@ -8,26 +8,33 @@ import java.util.List;
 
 public class GameRepository {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    private Session session = HibernateUtil.getSessionFactory().openSession();
 
     public Game getGameById(int id) {
-        Game game = session.get(Game.class, id);
-        return game;
+        return session.get(Game.class, id);
     }
 
     public List<Game> getGames() {
-        return null;
+        return (List<Game>) session.createQuery("from Game").list();
     }
 
     public Game createGame(Game game) {
-        return null;
+        session.beginTransaction();
+        session.save(game);
+        session.getTransaction().commit();
+        return game;
     }
 
     public Game updateGame(int id, Game game) {
-        return null;
+        session.beginTransaction();
+        session.update(game);
+        session.getTransaction().commit();
+        return game;
     }
 
     public void deleteGame(int id) {
-
+        session.beginTransaction();
+        session.delete(getGameById(id));
+        session.getTransaction().commit();
     }
 }

@@ -7,25 +7,34 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class QuestionRepository {
-    Session session = HibernateUtil.getSessionFactory().openSession();
+
+    private Session session = HibernateUtil.getSessionFactory().openSession();
 
     public Question getQuestionById(int id) {
-        return null;
+      return session.get(Question.class, id);
     }
 
     public List<Question> getQuestions() {
-        return null;
+      return (List<Question>) session.createQuery("from Question").list();
     }
 
     public Question createQuestion(Question question) {
-        return null;
+      session.beginTransaction();
+      session.save(question);
+      session.getTransaction().commit();
+      return question;
     }
 
     public Question updateQuestion(int id, Question question) {
-        return null;
+      session.beginTransaction();
+      session.update(question);
+      session.getTransaction().commit();
+      return question;
     }
 
     public void deleteQuestion(int id) {
-
+      session.beginTransaction();
+      session.delete(getQuestionById(id));
+      session.getTransaction().commit();
     }
 }
