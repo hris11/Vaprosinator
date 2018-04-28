@@ -33,6 +33,11 @@ public class User {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "users")
+    @JoinTable(
+        name = "User_Achievement",
+        joinColumns = { @JoinColumn(name = "user_id") },
+        inverseJoinColumns = { @JoinColumn(name = "achievement_id") }
+    )
     private List<Achievement> achievements;
 
     public User(String nickname, Integer gameId, List<ApplicationUser> applicationUser) {

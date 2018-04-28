@@ -23,7 +23,7 @@ public class AchievementRepository {
       return achievement;
     }
 
-    public List<Achievement> getAchievements(int userId) {
+    public List<Achievement> getAllAchievements() {
       List<Achievement> achievements  = session.createQuery("from Achievement").list();
       return achievements;
     }
