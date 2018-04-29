@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import {
   MatButtonModule
 } from '@angular/material';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -48,6 +52,8 @@ export function getAuthServiceConfigs() {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
     SocialLoginModule,

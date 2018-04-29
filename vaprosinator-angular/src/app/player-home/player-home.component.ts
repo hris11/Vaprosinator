@@ -4,7 +4,8 @@ import { PlayerService } from '../services/player/player.service';
 @Component({
   selector: 'app-player-home',
   templateUrl: './player-home.component.html',
-  styleUrls: ['./player-home.component.css']
+  styleUrls: ['./player-home.component.css'],
+  providers: [PlayerService]
 })
 export class PlayerHomeComponent implements OnInit {
   username = '';
@@ -15,6 +16,6 @@ export class PlayerHomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.playerService.getPlayer(1);
+    // this.playerService.getPlayer(1);
   }
 }
