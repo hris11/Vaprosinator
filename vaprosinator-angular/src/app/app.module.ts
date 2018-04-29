@@ -1,13 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 import {
   MatButtonModule
 } from '@angular/material';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {
   SocialLoginModule,
   AuthServiceConfig,
   GoogleLoginProvider,
-} from "angular5-social-login";
+} from 'angular5-social-login';
 
 import { AppComponent } from './app.component';
 import { AuthHandlerComponent } from './auth-handler/auth-handler.component';
@@ -20,13 +24,14 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { QuestionComponent } from './question/question.component';
 import { EndGameComponent } from './end-game/end-game.component';
 import { LobyComponent } from './loby/loby.component';
+import {AppRoutingModule} from './app-routing.module';
 
 export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
+  const config = new AuthServiceConfig(
     [
       {
         id: GoogleLoginProvider.PROVIDER_ID,
-        provider: new GoogleLoginProvider("581304647757-j4kg7mva8s27jpfhlddjot016geaov01.apps.googleusercontent.com")
+        provider: new GoogleLoginProvider('581304647757-j4kg7mva8s27jpfhlddjot016geaov01.apps.googleusercontent.com')
       }
     ]);
   return config;
@@ -47,9 +52,12 @@ export function getAuthServiceConfigs() {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AppRoutingModule
   ],
   providers: [
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
