@@ -8,7 +8,7 @@ import { PlayerService } from '../services/player/player.service';
   providers: [PlayerService]
 })
 export class PlayerHomeComponent implements OnInit {
-  username = '';
+  username = 'kaskata';
   wins = 0;
 
   constructor(
