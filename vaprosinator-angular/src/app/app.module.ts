@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import {
   MatButtonModule
 } from '@angular/material';
-
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+} from "angular5-social-login";
 
 import { AppComponent } from './app.component';
 import { AuthHandlerComponent } from './auth-handler/auth-handler.component';
@@ -17,6 +21,16 @@ import { QuestionComponent } from './question/question.component';
 import { EndGameComponent } from './end-game/end-game.component';
 import { LobyComponent } from './loby/loby.component';
 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+    [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider("581304647757-j4kg7mva8s27jpfhlddjot016geaov01.apps.googleusercontent.com")
+      }
+    ]);
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -34,9 +48,12 @@ import { LobyComponent } from './loby/loby.component';
   imports: [
     BrowserModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
