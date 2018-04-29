@@ -13,7 +13,7 @@
   background: darkgray;
   padding: 10%;
 
-  box-shadow: 10px 10px 8px #888888;
+  box-shadow: 10px 10px 8px #000;
 }
 
 .login-form h3 {
