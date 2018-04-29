@@ -20,6 +20,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { QuestionComponent } from './question/question.component';
 import { EndGameComponent } from './end-game/end-game.component';
 import { LobyComponent } from './loby/loby.component';
+import {AppRoutingModule} from './app-routing.module';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -49,7 +50,8 @@ export function getAuthServiceConfigs() {
     BrowserModule,
     MatInputModule,
     MatButtonModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AppRoutingModule
   ],
   providers: [
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}

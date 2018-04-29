@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from "../services/player.service";
+import { PlayerService } from '../services/player/player.service';
 
 @Component({
   selector: 'app-player-home',
@@ -7,7 +7,7 @@ import { PlayerService } from "../services/player.service";
   styleUrls: ['./player-home.component.css']
 })
 export class PlayerHomeComponent implements OnInit {
-  username: string = "";
+  username = '';
   wins = 0;
 
   constructor(
