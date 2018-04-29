@@ -6,7 +6,7 @@ import { PlayerHomeComponent } from './player-home/player-home.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: AuthLoginComponent},
-  {path: 'player', component: PlayerHomeComponent}
+  {path: 'player/playerId`', component: PlayerHomeComponent}
 ];
 
 @NgModule({
