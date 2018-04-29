@@ -13,6 +13,11 @@ import { PlayerService } from '../services/player/player.service';
   providers: [PlayerService]
 })
 export class AuthLoginComponent implements OnInit {
+
+  inputNickname = false;
+  private playerId;
+  private nickname;
+
   constructor( private socialAuthService: AuthService, private route: Router,   private  playerService: PlayerService) {}
 
   ngOnInit() {}
@@ -28,10 +33,27 @@ export class AuthLoginComponent implements OnInit {
         const player = {'email': userData.email};
         console.log(socialPlatform + ' sign in data : ' , userData);
         // Now sign-in with userData
-        this.playerService.createPlayer(player).subscribe(data => {
-          this.route.navigate(['player', data.id]);
-        });
+        this.playerService.createPlayer(player).subscribe(
+          data => {
+            this.playerId = data.id;
+            if (data.nickname === null) {
+             this.inputNickname = true;
+            } else {
+              this.navigate();
+            }
+          }
+      );
       }
     );
+  }
+
+  navigate() {
+    this.route.navigate(['player', this.playerId]);
+  }
+  setUserName() {
+    this.playerService.setNickname(this.playerId, this.nickname).subscribe(
+      data => {
+        this.navigate();
+      });
   }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule
 } from '@angular/material';
@@ -57,7 +58,8 @@ export function getAuthServiceConfigs() {
     MatInputModule,
     MatButtonModule,
     SocialLoginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}

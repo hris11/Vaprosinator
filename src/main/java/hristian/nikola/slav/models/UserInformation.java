@@ -17,8 +17,12 @@ public class UserInformation {
     @Column(name = "user_id")
     private Integer userId;
 
-    public UserInformation(Integer userId) {
+    @Column(name = "wins")
+    private Integer wins;
+
+    public UserInformation(Integer userId, Integer wins) {
         this.userId = userId;
+        this.wins = wins;
     }
 
     public UserInformation() {
@@ -38,5 +42,13 @@ public class UserInformation {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getWins() {
+        return wins;
+    }
+
+    public void setWins(Integer wins) {
+        this.wins = wins;
     }
 }

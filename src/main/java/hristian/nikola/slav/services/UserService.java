@@ -19,6 +19,7 @@ public class UserService {
     public User getUser(int userId) {
         return userRepository.getUserById(userId);
     }
+
     public User joinLoby(int lobyId) {
         return null;
     }
@@ -32,6 +33,9 @@ public class UserService {
     }
 
     public User changeNickname(int userId, String name) {
-        return null;
+        User user = getUser(userId);
+        user.setNickname(name);
+        userRepository.updateUser(userId, user);
+        return user;
     }
 }

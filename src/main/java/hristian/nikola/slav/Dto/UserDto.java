@@ -5,14 +5,11 @@ public class UserDto {
 
     private String email;
 
-    private String username;
-
     private String nickname;
 
-    public UserDto(int id, String email, String username, String nickname) {
+    public UserDto(int id, String email, String nickname) {
         this.id = id;
         this.email = email;
-        this.username = username;
         this.nickname = nickname;
     }
 
@@ -32,14 +29,6 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getNickname() {

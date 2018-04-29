@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from '../services/player/player.service';
+import { PlayerService, Player } from '../services/player/player.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-player-home',
@@ -8,14 +9,23 @@ import { PlayerService } from '../services/player/player.service';
   providers: [PlayerService]
 })
 export class PlayerHomeComponent implements OnInit {
-  username = 'kaskata';
-  wins = 0;
+  private sub: any;
+  player: Player;
+  private playerId;
 
   constructor(
-    private  playerService: PlayerService
+    private  playerService: PlayerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    // this.playerService.getPlayer(1);
+    this.sub = this.route.params.subscribe(params => {
+      this.playerId = +params['playerId'];
+      console.log(this.playerId);
+    });
+    this.playerService.getPlayer(this.playerId).subscribe(data => {
+      this.player = data;
+      console.log(data);
+    });
   }
 }
