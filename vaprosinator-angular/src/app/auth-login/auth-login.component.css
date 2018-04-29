@@ -1,9 +1,21 @@
 .login-form {
-  align-content: center;
+  /*align-content: center;
   width: 10%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 25% auto 0;*/
+  width: 50%;
+  text-align: center;
+  margin: 15% auto 0;
+
+  background: darkgray;
+  padding: 10%;
+
+  box-shadow: 10px 10px 8px #888888;
+}
+
+.login-form h3 {
+  font-family: Calibri, "Times New Roman";
 }
