@@ -6,16 +6,6 @@
     </properties>
     <root id="archive" name="Vaprosinator-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="Gradle : Vaprosinator : Vaprosinator-1.0-SNAPSHOT.war (exploded)" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="Vaprosinator_test" />
-        </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Gradle: junit:junit:4.12" />
-          <element id="library" level="project" name="Gradle: org.hamcrest:hamcrest-core:1.3" />
-        </element>
-      </element>
-      <element id="module-output" name="Vaprosinator" />
     </root>
   </artifact>
 </component>

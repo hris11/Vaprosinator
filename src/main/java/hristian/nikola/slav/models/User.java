@@ -17,6 +17,12 @@ public class User {
     @GenericGenerator(name="increment", strategy = "increment")
     private Integer id;
 
+    @Column
+    private String username;
+
+    @Column
+    private String email;
+
     @Column(name = "nickname")
     private String nickname;
 
@@ -40,10 +46,10 @@ public class User {
     )
     private List<Achievement> achievements;
 
-    public User(String nickname, Integer gameId, List<ApplicationUser> applicationUser) {
+    public User(String nickname, String username, String email) {
         this.nickname = nickname;
-        this.gameId = gameId;
-        this.applicationUser = applicationUser;
+        this.username = username;
+        this.email = email;
     }
 
     public User() {
@@ -55,6 +61,22 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNickname() {

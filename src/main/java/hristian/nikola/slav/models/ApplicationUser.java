@@ -19,17 +19,13 @@ public class ApplicationUser {
     private String username;
 
     @Column
-    private String password;
-
-    @Column
     private String email;
 
     @Column(name = "user_id")
     private Integer userId;
 
-    public ApplicationUser(String username, String password, String email, Integer userId) {
+    public ApplicationUser(String username, String email, Integer userId) {
         this.username = username;
-        this.password = password;
         this.email = email;
         this.userId = userId;
     }
@@ -51,14 +47,6 @@ public class ApplicationUser {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -84,7 +72,6 @@ public class ApplicationUser {
         ApplicationUser that = (ApplicationUser) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(username, that.username) &&
-                Objects.equals(password, that.password) &&
                 Objects.equals(email, that.email) &&
                 Objects.equals(userId, that.userId);
     }
@@ -92,6 +79,6 @@ public class ApplicationUser {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, username, password, email, userId);
+        return Objects.hash(id, username, email, userId);
     }
 }

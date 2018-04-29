@@ -7,10 +7,8 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL92Dialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">lavrak11</property>
+        <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Vaprosinator</property>
-
-
 
         <property name="connection_pool_size">1</property>
 
@@ -22,11 +20,11 @@
 
         <mapping class="hristian.nikola.slav.models.ApplicationUser"/>
         <mapping class="hristian.nikola.slav.models.User"/>
-        <!--<mapping class="hristian.nikola.slav.models.UserInformation"/>-->
+        <mapping class="hristian.nikola.slav.models.UserInformation"/>
         <mapping class="hristian.nikola.slav.models.Game"/>
         <mapping class="hristian.nikola.slav.models.Topic"/>
         <mapping class="hristian.nikola.slav.models.Question"/>
-        <!--<mapping class="hristian.nikola.slav.models.Achievement"/>-->
+        <mapping class="hristian.nikola.slav.models.Achievement"/>
         <mapping class="hristian.nikola.slav.models.Answer"/>
 
     </session-factory>
