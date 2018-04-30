@@ -25,6 +25,7 @@ import { QuestionComponent } from './question/question.component';
 import { EndGameComponent } from './end-game/end-game.component';
 import { LobyComponent } from './loby/loby.component';
 import {AppRoutingModule} from './app-routing.module';
+import { GameComponent } from './game/game.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -48,7 +49,8 @@ export function getAuthServiceConfigs() {
     LeaderboardComponent,
     QuestionComponent,
     EndGameComponent,
-    LobyComponent
+    LobyComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
