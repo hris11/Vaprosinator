@@ -14,7 +14,15 @@
      <textarea matInput placeholder="Choose a Nickname"></textarea>
     </mat-form-field>
     <br>-->
-    <h3>It looks like you don't have account or you haven't logged yet. <br> Please click on the button below which will log you with your <br> <i>Google Profile</i>.</h3>
-    <button mat-raised-button color="primary" (click)="socialSignIn('google')">Google Login</button>
+    <div *ngIf="inputNickname;else showLogin"> 
+        <mat-form-field>
+            <textarea matInput placeholder="Choose a nickname" [(ngModel)]="nickname"></textarea>
+        </mat-form-field>
+          <button mat-raised-button color="primary" (click)="setUserName()">Confirm</button>          
+    </div>
+    <ng-template #showLogin>
+        <h3>It looks like you don't have account or you haven't logged yet. <br> Please click on the button below which will log you with your <br> <i>Google Profile</i>.</h3>
+        <button mat-raised-button color="primary" (click)="socialSignIn('google')">Google Login</button>
+    </ng-template>
   </div>
 </html>

@@ -18,9 +18,6 @@ public class User {
     private Integer id;
 
     @Column
-    private String username;
-
-    @Column
     private String email;
 
     @Column(name = "nickname")
@@ -46,9 +43,8 @@ public class User {
     )
     private List<Achievement> achievements;
 
-    public User(String nickname, String username, String email) {
+    public User(String nickname, String email) {
         this.nickname = nickname;
-        this.username = username;
         this.email = email;
     }
 
@@ -61,14 +57,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
