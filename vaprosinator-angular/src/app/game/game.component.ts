@@ -13,7 +13,7 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
-    var chatSocket = new WebSocket('ws://localhost:9999/socket');
+    var chatSocket = new WebSocket('ws://localhost:9999/api/socket'); //change to your port
 
     chatSocket.onopen = function (e) {
       console.log("asdddddddd")

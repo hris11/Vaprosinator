@@ -1,12 +1,9 @@
 package hristian.nikola.slav.resources;
 
-import sun.plugin2.message.Message;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
@@ -26,6 +23,7 @@ public class SocketServerResource {
 
     @OnOpen
     public void onOpen(Session peer) throws IOException {
+        System.out.println("connected " + peer.getId());
         peers.add(peer);
     }
 
