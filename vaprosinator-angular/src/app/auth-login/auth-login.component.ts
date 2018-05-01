@@ -35,6 +35,7 @@ export class AuthLoginComponent implements OnInit {
         // Now sign-in with userData
         this.playerService.createPlayer(player).subscribe(
           data => {
+            console.log(data);
             this.playerId = data.id;
             if (data.nickname === null) {
              this.inputNickname = true;

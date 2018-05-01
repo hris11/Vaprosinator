@@ -5,7 +5,6 @@ import hristian.nikola.slav.models.User;
 import hristian.nikola.slav.services.UserService;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
 
 @Path("player")
 public class UserResource {
@@ -17,8 +16,7 @@ public class UserResource {
     @Produces("application/json")
     public User createPlayer(UserDto data) {
         User us = new User(data.getNickname(), data.getEmail());
-        userService.insert(us);
-        return us;
+        return userService.insert(us);
     }
 
     @GET

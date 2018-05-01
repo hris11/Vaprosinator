@@ -12,7 +12,7 @@ export class PlayerHomeComponent implements OnInit {
   private sub: any;
   player: Player;
   private playerId;
-
+  progressSpinner = true;
   constructor(
     private  playerService: PlayerService,
     private route: ActivatedRoute
@@ -21,11 +21,22 @@ export class PlayerHomeComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.playerId = +params['playerId'];
-      console.log(this.playerId);
     });
-    this.playerService.getPlayer(this.playerId).subscribe(data => {
-      this.player = data;
-      console.log(data);
+    this.nikola().then(() => {
+      this.progressSpinner = false;
+    });
+  }
+
+  nikola() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.playerService.getPlayer(this.playerId)
+        .subscribe(data => {
+          this.player = data;
+          console.log(data);
+          resolve();
+        });
+      });
     });
   }
 }
