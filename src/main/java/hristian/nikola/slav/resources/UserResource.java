@@ -1,11 +1,12 @@
 package hristian.nikola.slav.resources;
 
 import hristian.nikola.slav.Dto.UserDto;
+import hristian.nikola.slav.models.GameLog;
 import hristian.nikola.slav.models.User;
 import hristian.nikola.slav.services.UserService;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("player")
 public class UserResource {
@@ -16,7 +17,7 @@ public class UserResource {
     @Consumes("application/json")
     @Produces("application/json")
     public User createPlayer(UserDto data) {
-        User us = new User(data.getNickname(), data.getEmail());
+        User us = new User(data.getNickname(), data.getEmail(), null);
         userService.insert(us);
         return us;
     }
@@ -26,6 +27,13 @@ public class UserResource {
     @Produces("application/json")
     public User getPlayerInfo(@PathParam("user_id") Integer playerId) {
         return userService.getUser(playerId);
+    }
+
+    @GET
+    @Path("/{user_id}/gamelog")
+    @Produces("application/json")
+    public List<GameLog> getPlayerGameLog(@PathParam("user_id") Integer userId) {
+        return userService.getPlayerGameLog(userId);
     }
 
     @POST

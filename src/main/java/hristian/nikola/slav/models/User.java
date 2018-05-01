@@ -34,6 +34,10 @@ public class User {
     @JoinColumn(name = "user_id")
     private List<ApplicationUser> applicationUser;
 
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "user_id")
+    private List<GameLog> gameLogs;
+
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "users")
     @JoinTable(
@@ -43,9 +47,10 @@ public class User {
     )
     private List<Achievement> achievements;
 
-    public User(String nickname, String email) {
+    public User(String nickname, String email, List<GameLog> gameLogs) {
         this.nickname = nickname;
         this.email = email;
+        this.gameLogs = gameLogs;
     }
 
     public User() {
@@ -109,20 +114,32 @@ public class User {
         this.achievements = achievements;
     }
 
+    public List<GameLog> getGameLogs() {
+        return gameLogs;
+    }
+
+    public void setGameLogs(List<GameLog> gameLogs) {
+        this.gameLogs = gameLogs;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id) &&
+                Objects.equals(email, user.email) &&
                 Objects.equals(nickname, user.nickname) &&
                 Objects.equals(gameId, user.gameId) &&
-                Objects.equals(applicationUser, user.applicationUser);
+                Objects.equals(userInformations, user.userInformations) &&
+                Objects.equals(applicationUser, user.applicationUser) &&
+                Objects.equals(gameLogs, user.gameLogs) &&
+                Objects.equals(achievements, user.achievements);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, nickname, gameId, applicationUser);
+        return Objects.hash(id, email, nickname, gameId, userInformations, applicationUser, gameLogs, achievements);
     }
 }
