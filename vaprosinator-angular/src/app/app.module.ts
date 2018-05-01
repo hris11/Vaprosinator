@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {
-  MatButtonModule
+  MatButtonModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -61,7 +62,8 @@ export function getAuthServiceConfigs() {
     MatButtonModule,
     SocialLoginModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}

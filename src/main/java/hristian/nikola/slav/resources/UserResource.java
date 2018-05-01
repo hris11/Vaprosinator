@@ -18,8 +18,7 @@ public class UserResource {
     @Produces("application/json")
     public User createPlayer(UserDto data) {
         User us = new User(data.getNickname(), data.getEmail(), null);
-        userService.insert(us);
-        return us;
+        return userService.insert(us);
     }
 
     @GET

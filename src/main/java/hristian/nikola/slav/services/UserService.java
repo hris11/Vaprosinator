@@ -16,14 +16,19 @@ public class UserService {
 
     private GameLogRepository gameLogRepository = new GameLogRepository();
 
-    public void insert(User user) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
+    public User insert(User user) {
+        if(getUserByEmail(user.getEmail()) == null) {
+            return userRepository.createUser(user);
+        }
+        return getUserByEmail(user.getEmail());
     }
+
     public User getUser(int userId) {
         return userRepository.getUserById(userId);
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.checkIfExists(email);
     }
 
     public User joinLoby(int lobyId) {
