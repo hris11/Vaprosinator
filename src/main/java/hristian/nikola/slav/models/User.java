@@ -26,9 +26,8 @@ public class User {
     @Column(name = "game_id")
     private Integer gameId;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "user_id")
-    private UserInformation userInformation;
+    @Column
+    private Integer wins;
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
@@ -47,10 +46,14 @@ public class User {
     )
     private List<Achievement> achievements;
 
-    public User(String nickname, String email, List<GameLog> gameLogs) {
-        this.nickname = nickname;
+    public User(String email, String nickname, Integer gameId, Integer wins, List<ApplicationUser> applicationUser, List<GameLog> gameLogs, List<Achievement> achievements) {
         this.email = email;
+        this.nickname = nickname;
+        this.gameId = gameId;
+        this.wins = wins;
+        this.applicationUser = applicationUser;
         this.gameLogs = gameLogs;
+        this.achievements = achievements;
     }
 
     public User() {
@@ -88,30 +91,20 @@ public class User {
         this.gameId = gameId;
     }
 
-    public UserInformation getUserInformation() {
-        return userInformation;
+    public Integer getWins() {
+        return wins;
     }
 
-    public void setUserInformation(
-        UserInformation userInformation) {
-        this.userInformation = userInformation;
+    public void setWins(Integer wins) {
+        this.wins = wins;
     }
 
     public List<ApplicationUser> getApplicationUser() {
         return applicationUser;
     }
 
-    public void setApplicationUser(
-        List<ApplicationUser> applicationUser) {
+    public void setApplicationUser(List<ApplicationUser> applicationUser) {
         this.applicationUser = applicationUser;
-    }
-
-    public List<Achievement> getAchievements() {
-        return achievements;
-    }
-
-    public void setAchievements(List<Achievement> achievements) {
-        this.achievements = achievements;
     }
 
     public List<GameLog> getGameLogs() {
@@ -120,6 +113,14 @@ public class User {
 
     public void setGameLogs(List<GameLog> gameLogs) {
         this.gameLogs = gameLogs;
+    }
+
+    public List<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
     }
 
     @Override
@@ -131,7 +132,7 @@ public class User {
                 Objects.equals(email, user.email) &&
                 Objects.equals(nickname, user.nickname) &&
                 Objects.equals(gameId, user.gameId) &&
-                Objects.equals(userInformation, user.userInformation) &&
+                Objects.equals(wins, user.wins) &&
                 Objects.equals(applicationUser, user.applicationUser) &&
                 Objects.equals(gameLogs, user.gameLogs) &&
                 Objects.equals(achievements, user.achievements);
@@ -140,6 +141,6 @@ public class User {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, email, nickname, gameId, userInformation, applicationUser, gameLogs, achievements);
+        return Objects.hash(id, email, nickname, gameId, wins, applicationUser, gameLogs, achievements);
     }
 }

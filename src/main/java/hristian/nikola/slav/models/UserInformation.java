@@ -14,18 +14,14 @@ public class UserInformation {
     @GenericGenerator(name="increment", strategy = "increment")
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
-
     @Column(name = "wins")
     private Integer wins;
 
-    public UserInformation(Integer userId, Integer wins) {
-        this.userId = userId;
-        this.wins = wins;
+    public UserInformation() {
     }
 
-    public UserInformation() {
+    public UserInformation(User user, Integer wins) {
+        this.wins = wins;
     }
 
     public Integer getId() {
@@ -34,14 +30,6 @@ public class UserInformation {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public Integer getWins() {

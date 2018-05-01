@@ -50,17 +50,20 @@ public class UserService {
 
     public List<User> getTopTen() {
         List<User> users = userRepository.getUsers();
-        System.out.println(users);
         users.sort((User u1, User u2) ->{
-                if(u1.getUserInformation().getWins() == u2.getUserInformation().getWins())
+                if(u1.getWins().equals(u2.getWins()))
                     return 0;
-                else if(u1.getUserInformation().getWins() > u2.getUserInformation().getWins())
+                else if(u1.getWins() < u2.getWins())
                     return 1;
                 else
                     return -1;
             }
         );
-        return users;
+        if (users.size() <= 10) {
+            return users;
+        } else {
+            return users.subList(0, 10);
+        }
     }
 
     public List<GameLog> getPlayerGameLog(Integer userId) {

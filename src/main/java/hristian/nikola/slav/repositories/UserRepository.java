@@ -5,6 +5,7 @@ import hristian.nikola.slav.models.User;
 import javax.persistence.Query;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
@@ -15,7 +16,13 @@ public class UserRepository {
     }
 
     public List<User> getUsers() {
-        return (List<User>) session.createQuery("from User").list();
+        List<User> result = new ArrayList<>();
+        session.beginTransaction();
+        result =  session.createQuery("from User", User.class).getResultList();
+        session.getTransaction().commit();
+
+        return result;
+
     }
 
     public User createUser(User user) {

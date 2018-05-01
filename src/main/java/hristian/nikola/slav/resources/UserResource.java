@@ -17,7 +17,10 @@ public class UserResource {
     @Consumes("application/json")
     @Produces("application/json")
     public User createPlayer(UserDto data) {
-        User us = new User(data.getNickname(), data.getEmail(), null);
+        User us = new User();
+        us.setNickname(data.getNickname());
+        us.setEmail(data.getEmail());
+        us.setWins(0);
         return userService.insert(us);
     }
 
