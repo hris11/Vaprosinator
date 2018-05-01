@@ -28,6 +28,8 @@ import { EndGameComponent } from './end-game/end-game.component';
 import { LobyComponent } from './loby/loby.component';
 import {AppRoutingModule} from './app-routing.module';
 import { GameComponent } from './game/game.component';
+import { PlayerLogComponent } from './player-log/player-log.component';
+import { PlayerLogGameComponent } from './player-log-game/player-log-game.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -52,7 +54,9 @@ export function getAuthServiceConfigs() {
     QuestionComponent,
     EndGameComponent,
     LobyComponent,
-    GameComponent
+    GameComponent,
+    PlayerLogComponent,
+    PlayerLogGameComponent
   ],
   imports: [
     BrowserModule,

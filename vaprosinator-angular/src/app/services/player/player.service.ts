@@ -26,6 +26,20 @@ export class PlayerService {
     return this.http.post<Player>(environment.baseUrl + `player/${user_id}/set-nickname`, nickname);
   }
 
+  getPlayerGameLog(playerId) {
+    return this.http.get<Game[]>(`${environment.baseUrl}player/${playerId}/gamelog`);
+  }
+
+}
+
+export interface Game {
+  id;
+  gameId;
+  finishDate;
+  userId;
+  won;
+  answeredQuestions;
+  mistakenQuestions;
 }
 
 export interface Player {
