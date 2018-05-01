@@ -1,0 +1,31 @@
+.leaderboard-ul {
+  color: #fff;/*
+  list-style: none;*/
+}
+
+.leaderboard-ul li {
+  margin-top: 2%;
+}
+
+.leaderboard-li-div {
+  display: flex;
+  justify-content: space-around;
+  font-size: 30px;
+}
+
+.title-leader-board {
+  color: #ccc;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+.leaderboard-ul li:nth-child(odd) {
+  background: linear-gradient(to right, #161616, #565656, #565656, #565656, #565656, #565656, #161616);
+}
+
+.leaderboard-ul li:nth-child(even) {
+  background: linear-gradient(to right, #161616, #333333, #333333, #333333, #333333, #333333, #161616);
+}

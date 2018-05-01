@@ -1,3 +1,17 @@
-<p>
-  leaderboard works!
-</p>
+<div>
+  <span class="title-leader-board">Leader board</span>
+  <ol class="leaderboard-ul">
+    <li *ngFor="let player of players">
+      <div class="leaderboard-li-div">
+        <div>
+          <span>Name: </span>
+          <span><i>{{player.nickname}}</i></span>
+        </div>
+        <div>
+          <span>Wins: </span>
+          <span><i>{{player.wins}}</i></span>
+        </div>
+      </div>
+    </li>
+  </ol>
+</div>

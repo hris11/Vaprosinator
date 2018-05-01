@@ -30,6 +30,10 @@ export class PlayerService {
     return this.http.get<Game[]>(`${environment.baseUrl}player/${playerId}/gamelog`);
   }
 
+  getLeaderBoard() {
+    return this.http.get<Player[]>(`${environment.baseUrl}leaderboard`);
+  }
+
 }
 
 export interface Game {
@@ -48,4 +52,5 @@ export interface Player {
   email;
   achievements;
   userInformation;
+  wins;
 }
