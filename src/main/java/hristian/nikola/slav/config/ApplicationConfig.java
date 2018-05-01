@@ -9,14 +9,18 @@ import java.io.IOException;
 @ApplicationPath("api")
 public class ApplicationConfig extends Application {
     private static SocketServerResource socketServerResource;
+    private Thread thread;
 
     public ApplicationConfig() {
-        try {
-            socketServerResource.run();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        thread = new Thread(() -> {
+            try {
+                socketServerResource.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
     }
 }

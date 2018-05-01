@@ -26,9 +26,9 @@ public class User {
     @Column(name = "game_id")
     private Integer gameId;
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
-    private List<UserInformation> userInformations;
+    private UserInformation userInformation;
 
     @OneToMany(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
@@ -88,13 +88,13 @@ public class User {
         this.gameId = gameId;
     }
 
-    public List<UserInformation> getUserInformations() {
-        return userInformations;
+    public UserInformation getUserInformation() {
+        return userInformation;
     }
 
-    public void setUserInformations(
-        List<UserInformation> userInformations) {
-        this.userInformations = userInformations;
+    public void setUserInformation(
+        UserInformation userInformation) {
+        this.userInformation = userInformation;
     }
 
     public List<ApplicationUser> getApplicationUser() {
@@ -131,7 +131,7 @@ public class User {
                 Objects.equals(email, user.email) &&
                 Objects.equals(nickname, user.nickname) &&
                 Objects.equals(gameId, user.gameId) &&
-                Objects.equals(userInformations, user.userInformations) &&
+                Objects.equals(userInformation, user.userInformation) &&
                 Objects.equals(applicationUser, user.applicationUser) &&
                 Objects.equals(gameLogs, user.gameLogs) &&
                 Objects.equals(achievements, user.achievements);
@@ -140,6 +140,6 @@ public class User {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, email, nickname, gameId, userInformations, applicationUser, gameLogs, achievements);
+        return Objects.hash(id, email, nickname, gameId, userInformation, applicationUser, gameLogs, achievements);
     }
 }

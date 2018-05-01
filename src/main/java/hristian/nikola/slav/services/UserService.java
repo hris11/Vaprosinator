@@ -1,13 +1,11 @@
 package hristian.nikola.slav.services;
 
-import hristian.nikola.slav.config.HibernateUtil;
-import hristian.nikola.slav.models.ApplicationUser;
 import hristian.nikola.slav.models.GameLog;
 import hristian.nikola.slav.models.User;
 import hristian.nikola.slav.repositories.GameLogRepository;
 import hristian.nikola.slav.repositories.UserRepository;
-import org.hibernate.Session;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class UserService {
@@ -48,6 +46,21 @@ public class UserService {
         user.setNickname(name);
         userRepository.updateUser(userId, user);
         return user;
+    }
+
+    public List<User> getTopTen() {
+        List<User> users = userRepository.getUsers();
+        System.out.println(users);
+        users.sort((User u1, User u2) ->{
+                if(u1.getUserInformation().getWins() == u2.getUserInformation().getWins())
+                    return 0;
+                else if(u1.getUserInformation().getWins() > u2.getUserInformation().getWins())
+                    return 1;
+                else
+                    return -1;
+            }
+        );
+        return users;
     }
 
     public List<GameLog> getPlayerGameLog(Integer userId) {
