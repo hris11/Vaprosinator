@@ -3,10 +3,12 @@ package hristian.nikola.slav.resources;
 import java.io.*;
 
 public class SocketServerResource {
+    public static SocketServer server;
+
     public static void run() throws IOException, InterruptedException {
         int port = 9090;
 
-        SocketServer server = new SocketServer( port );
+        server = new SocketServer( port );
 
         server.start();
         System.out.println("Socket Server started on port: " + server.getPort());
