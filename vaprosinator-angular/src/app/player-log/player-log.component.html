@@ -1,0 +1,10 @@
+<ul class="player-log-ul">
+  <li *ngFor="let ga of game">
+    <app-player-log-game
+      [finishDate] = ga.finishDate
+      [answeredQuestions] = ga.answeredQuestions
+      [mistakenQuestions] = ga.mistakenQuestions
+      [won] = ga.won
+    ></app-player-log-game>
+  </li>
+</ul>
