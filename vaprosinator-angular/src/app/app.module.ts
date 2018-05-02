@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER  } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {
@@ -30,6 +30,8 @@ import {AppRoutingModule} from './app-routing.module';
 import { GameComponent } from './game/game.component';
 import { PlayerLogComponent } from './player-log/player-log.component';
 import { PlayerLogGameComponent } from './player-log-game/player-log-game.component';
+
+import {WebSocketService} from './services/socket/web-socket.service';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -70,6 +72,13 @@ export function getAuthServiceConfigs() {
     MatProgressSpinnerModule
   ],
   providers: [
+    WebSocketService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (ds: WebSocketService) => function() { return ds.initSocket(); },
+      deps: [WebSocketService],
+      multi: true
+    },
     {provide: AuthServiceConfig, useFactory: getAuthServiceConfigs}
   ],
   bootstrap: [AppComponent]
