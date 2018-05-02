@@ -72,7 +72,9 @@ public class SocketServer extends WebSocketServer {
         }
         if (event.equals("answer")) {
             System.out.println(event);
-            if (jsonObject.get(event).equals(answerService.getQuestionAnswers(p1)))
+            if (jsonObject.get(event).equals(answerService.getQuestionAnswers(p1))) {
+                score += 1;
+            }
             conn.send("{ \"message\" : \"stats\", \"p1\" : \"" + this.score + "\" }");
         }
         if (event.equals("end-game")) {
