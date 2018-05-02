@@ -1,17 +1,20 @@
 
- <mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper" >
+ <mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper" class="question-stepper">
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" class="stepper-first-step-box">
         <ng-template matStepLabel>Write the question</ng-template>
-        <mat-form-field>
+        <div class="stepper-header">
+          <span><i>Please fill the question field and select the topic of your question</i></span>
+        </div>
+        <mat-form-field class="stepper-first-step-question-field">
           <textarea matInput placeholder="Question" formControlName="firstCtrl" [(ngModel)]="question" ></textarea>
         </mat-form-field>
-          <mat-select placeholder="Choose Topic" [(ngModel)]="topic" formControlName="firstCtrl">
+          <mat-select placeholder="Choose Topic" [(ngModel)]="topic" formControlName="firstCtrl" class="stepper-first-step-topic-field">
               <mat-option *ngFor="let topic of topics" [value]="topic">
                 {{topic.information}}
               </mat-option>
             </mat-select>
-        <div>
+        <div class="stepper-navigation">
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
@@ -19,26 +22,33 @@
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Put the answers</ng-template>
-        <mat-form-field>
-          <textarea matInput formControlName="secondCtrl" placeholder="Answer A:" [(ngModel)]="answers[0].content"></textarea>
-        </mat-form-field>
-      
-        <mat-form-field>
-          <textarea matInput formControlName="secondCtrl" placeholder="Answer B:"  [(ngModel)]="answers[1].content" ></textarea>
-        </mat-form-field>
-      
-        <mat-form-field>
-          <textarea matInput formControlName="secondCtrl" placeholder="Answer C:"  [(ngModel)]="answers[2].content" ></textarea>
-        </mat-form-field>
-        <mat-form-field>
-          Correct Answer
-          <mat-select [(value)]="correctAnswer">
-            <mat-option value="0">A</mat-option>
-            <mat-option value="1">B</mat-option>
-            <mat-option value="2">C</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div>
+        <div class="stepper-header">
+          <span><i>Please fill the options for the question and choose the right one below</i></span>
+        </div>
+        <div class="stepper-second-questions-box">
+          <mat-form-field>
+            <textarea matInput formControlName="secondCtrl" placeholder="Answer A:" [(ngModel)]="answers[0].content"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput formControlName="secondCtrl" placeholder="Answer B:"  [(ngModel)]="answers[1].content" ></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput formControlName="secondCtrl" placeholder="Answer C:"  [(ngModel)]="answers[2].content" ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="stepper-second-right-question-box">
+          <mat-form-field>
+            Correct Answer
+            <mat-select [(value)]="correctAnswer">
+              <mat-option value="0">A</mat-option>
+              <mat-option value="1">B</mat-option>
+              <mat-option value="2">C</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="stepper-navigation">
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
@@ -46,12 +56,14 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
+      <div class="stepper-header">
+        <span><i>You are all done. You have the option to reform the question or submit it direct to the game</i></span>
+      </div>
+      <div class="stepper-navigation">
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
-        <button mat-button (click)="createQuestion()">Finish</button>
+        <button mat-button (click)="createQuestion()">Submit</button>
       </div>
     </mat-step>
-  </mat-horizontal-stepper> 
+  </mat-horizontal-stepper>
 

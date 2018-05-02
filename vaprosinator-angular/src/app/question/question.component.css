@@ -1,0 +1,54 @@
+.question-stepper {
+  background: darkgray;
+  width: 80%;
+  border-radius: 10px;
+  margin: 10% auto 0;
+}
+
+.stepper-navigation {
+  background: #4f4f4f;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.stepper-navigation button {
+  color: #cccccc;
+}
+
+.stepper-first-step-box {
+  /*display: flex;
+  justify-content: space-around;*/
+}
+
+.stepper-first-step-question-field, .stepper-first-step-topic-field {
+  width: 100%;
+  text-align: center;
+}
+
+.stepper-second-questions-box {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stepper-second-questions-box mat-form-field {
+  width: 25%;
+  text-align: center;
+}
+
+.stepper-second-right-question-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.stepper-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.stepper-header span {
+  color: #161616;
+}
+
