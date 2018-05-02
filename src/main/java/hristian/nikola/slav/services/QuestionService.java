@@ -4,6 +4,7 @@ import hristian.nikola.slav.models.Question;
 
 import hristian.nikola.slav.repositories.QuestionRepository;
 import java.util.List;
+import java.util.Random;
 
 public class QuestionService {
 

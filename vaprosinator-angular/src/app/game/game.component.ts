@@ -8,11 +8,12 @@ styleUrls: ['./game.component.css']
 
 export class GameComponent implements OnInit {
 
+  private playerId;
 
   constructor(private webSocket: WebSocketService) {
   }
 
   ngOnInit() {
-    this.webSocket.send('asdfsafas');
+    this.webSocket.send('{ "message" : "queue", "playerId" : ' + this.playerId+ '}');
   }
 }

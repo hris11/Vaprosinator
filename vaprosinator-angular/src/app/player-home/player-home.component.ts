@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService, Player } from '../services/player/player.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-player-home',
@@ -15,7 +15,8 @@ export class PlayerHomeComponent implements OnInit {
   progressSpinner = true;
   constructor(
     private  playerService: PlayerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -25,6 +26,10 @@ export class PlayerHomeComponent implements OnInit {
     this.getPlayer().then(() => {
       this.progressSpinner = false;
     });
+  }
+
+  startGame() {
+    this.router.navigate(['game', this.playerId])
   }
 
   getPlayer() {
