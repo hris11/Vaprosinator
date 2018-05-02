@@ -22,12 +22,12 @@ export class PlayerHomeComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.playerId = +params['playerId'];
     });
-    this.nikola().then(() => {
+    this.getPlayer().then(() => {
       this.progressSpinner = false;
     });
   }
 
-  nikola() {
+  getPlayer() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.playerService.getPlayer(this.playerId)
