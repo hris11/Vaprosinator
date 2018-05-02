@@ -2,15 +2,18 @@ package hristian.nikola.slav.services;
 
 import hristian.nikola.slav.models.Topic;
 
+import hristian.nikola.slav.repositories.TopicRepository;
 import java.util.List;
 
 public class TopicService {
-    public List<Topic> getTopics(String category) {
-        return null;
+    private TopicRepository topicRepository = new TopicRepository();
+
+    public List<Topic> getTopics() {
+        return topicRepository.getTopics();
     }
 
     public Topic createTopic(Topic topic) {
-        return null;
+        return topicRepository.createTopic(topic);
     }
 
     public Topic chosenGameTopic(Topic topic, int gameId) {

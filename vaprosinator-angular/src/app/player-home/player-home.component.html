@@ -11,7 +11,7 @@
         <h4>Тук ще се показва задачата на човека, койято му предстои днес</h4>
 
         <div class="player-home-statistic">
-          <span>Wins: </span><span class="player-home-wins">{{player.userInformation.wins}}</span>
+          <span>Wins: </span><span class="player-home-wins">{{player.wins}}</span>
         </div>
       </div>
 
@@ -19,7 +19,8 @@
       <button mat-raised-button color="primary">Start!</button>
       <button mat-raised-button color="primary">Leaderboard</button>
       <button mat-raised-button color="primary">Achievements</button>
-      <a mat-raised-button routerLink="/player/1/gamelog" color="primary">Profile log</a>
+      <a mat-raised-button [routerLink]="['/player', playerId, 'gamelog']" color="primary">Profile log</a>
+      <a mat-raised-button [routerLink]="['/create-question', playerId]" color="primary">Create a Question</a>      
       </div>
 
   </ng-template>

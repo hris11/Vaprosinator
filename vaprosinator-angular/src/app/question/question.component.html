@@ -1,3 +1,57 @@
-<p>
-  question works!
-</p>
+
+ <mat-horizontal-stepper [linear]="false" #stepper="matHorizontalStepper" >
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Write the question</ng-template>
+        <mat-form-field>
+          <textarea matInput placeholder="Question" formControlName="firstCtrl" [(ngModel)]="question" ></textarea>
+        </mat-form-field>
+          <mat-select placeholder="Choose Topic" [(ngModel)]="topic" formControlName="firstCtrl">
+              <mat-option *ngFor="let topic of topics" [value]="topic">
+                {{topic.information}}
+              </mat-option>
+            </mat-select>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Put the answers</ng-template>
+        <mat-form-field>
+          <textarea matInput formControlName="secondCtrl" placeholder="Answer A:" [(ngModel)]="answers[0].content"></textarea>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <textarea matInput formControlName="secondCtrl" placeholder="Answer B:"  [(ngModel)]="answers[1].content" ></textarea>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <textarea matInput formControlName="secondCtrl" placeholder="Answer C:"  [(ngModel)]="answers[2].content" ></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          Correct Answer
+          <mat-select [(value)]="correctAnswer">
+            <mat-option value="0">A</mat-option>
+            <mat-option value="1">B</mat-option>
+            <mat-option value="2">C</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="createQuestion()">Finish</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper> 
+

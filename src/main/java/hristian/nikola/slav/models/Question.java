@@ -29,6 +29,9 @@ public class Question {
     @Column
     private String question;
 
+    @Column
+    private Integer creatorId;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Answer> answers;
@@ -36,8 +39,10 @@ public class Question {
     @Column(name = "topic_id")
     private Integer topicId;
 
-    public Question(String question, List<Answer> answers, Integer topicId) {
+    public Question(String question, Integer creatorId,
+        List<Answer> answers, Integer topicId) {
         this.question = question;
+        this.creatorId = creatorId;
         this.answers = answers;
         this.topicId = topicId;
     }
@@ -77,6 +82,14 @@ public class Question {
 
     public void setTopicId(Integer topicId) {
         this.topicId = topicId;
+    }
+
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
     }
 
     @Override

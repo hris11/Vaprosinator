@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER  } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import {
   MatButtonModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatStepperModule,
+  MatSelectModule
 } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,7 +15,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   SocialLoginModule,
   AuthServiceConfig,
-  GoogleLoginProvider,
+  GoogleLoginProvider
 } from 'angular5-social-login';
 
 import { AppComponent } from './app.component';
@@ -69,7 +72,10 @@ export function getAuthServiceConfigs() {
     SocialLoginModule,
     AppRoutingModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [
     WebSocketService,

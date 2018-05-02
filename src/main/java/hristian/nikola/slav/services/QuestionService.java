@@ -2,29 +2,22 @@ package hristian.nikola.slav.services;
 
 import hristian.nikola.slav.models.Question;
 
+import hristian.nikola.slav.repositories.QuestionRepository;
 import java.util.List;
 
 public class QuestionService {
-    private List<Question> questionList;
 
-    public QuestionService() {
-        questionList = getQuestions();
-    }
+    private QuestionRepository questionRepository = new QuestionRepository();
 
-    private List<Question> getQuestions() {
-        return null;
+    public List<Question> getQuestions() {
+        return questionRepository.getQuestions();
     }
 
     public Question getQuestion(int questionId) {
-        return null;
+        return questionRepository.getQuestionById(questionId);
     }
 
     public Question addQuestion(Question question) {
-        return null;
-    }
-
-    public List<Question> updateQuestionList() {
-        //add more questions to the question list
-        return null;
+        return questionRepository.createQuestion(question);
     }
 }
